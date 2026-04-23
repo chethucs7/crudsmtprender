@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard - Antigravity{% endblock %}
+{% block content %}
+<div class="nav">
+    <div class="logo">ANTIGRAVITY</div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+        <span>Welcome, {{ name }}</span>
+        <a href="{{ url_for('auth.logout') }}" style="color: var(--error); text-decoration: none; font-size: 0.875rem;">Logout</a>
+    </div>
+</div>
+
+<div style="margin-top: 3rem; display: flex; justify-content: space-between; align-items: center;">
+    <h2>My Records</h2>
+    <button id="btn-add-record" style="width: auto; padding: 0.6rem 1.5rem;">+ Add New</button>
+</div>
+
+<!-- Grid for Records -->
+<div class="grid" id="records-grid">
+    <!-- Records will be loaded here via AJAX -->
+</div>
+
+<!-- Add/Edit Modal (Simple CSS/JS based) -->
+<div id="record-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem;">
+    <div class="auth-card" style="margin: 0; max-width: 500px;">
+        <h2 id="modal-title">Add Record</h2>
+        <form id="record-form">
+            <input type="hidden" id="record-id">
+            <div class="input-group">
+                <label>Title</label>
+                <input type="text" id="record-title" required placeholder="e.g. Project Alpha">
+            </div>
+            <div class="input-group">
+                <label>Description</label>
+                <textarea id="record-desc" rows="4" placeholder="Enter details..." style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: white;"></textarea>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button type="button" id="btn-close-modal" style="background: var(--glass); border: 1px solid var(--glass-border);">Cancel</button>
+                <button type="submit">Save Record</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
