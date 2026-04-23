@@ -43,7 +43,7 @@ python app.py
 4.  Configure the following settings:
     - **Runtime**: `Python 3`
     - **Build Command**: `pip install -r requirements.txt`
-    - **Start Command**: `gunicorn app:app`
+    - **Start Command**: `gunicorn main:app`
 5.  Add **Environment Variables** in the Render Dashboard:
     - `SUPABASE_URL`
     - `SUPABASE_ANON_KEY`
@@ -56,7 +56,7 @@ python app.py
 
 ```text
 /
-├── app.py              # Entry point
+├── main.py             # Entry point (renamed from app.py to avoid conflict)
 ├── .env                # Secrets (do not commit to git)
 ├── requirements.txt    # Dependencies
 ├── runtime.txt         # Python version for Render
